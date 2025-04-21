@@ -18,7 +18,19 @@ public class OfferService {
         return offerDao.getOffers();
     }
 
+    public Offer getOfferById(int id) {
+        return offerDao.getOffer(id);
+    }
+
     public void insertOffer(Offer offer) {
         offerDao.insert(offer);
+    }
+
+    public void updateOffer(Offer offer) {
+        offerDao.update(offer);
+    }
+
+    public void deleteOfferById(int id) {
+        offerDao.delete(id);
     }
 }

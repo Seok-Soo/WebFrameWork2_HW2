@@ -1,5 +1,6 @@
 package kr.ac.hansung.cse.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -13,7 +14,12 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
+@Entity
+@Table(name="offers")
 public class Offer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Size(min=2, max=100, message = "Name must be between 2 and 100 chars")
@@ -25,4 +31,10 @@ public class Offer {
 
     @Size(min=5, max=100, message="Text must be between 5 and 100 chars")
     private String text;
+
+    public Offer(String name, String email, String text) {
+        this.name = name;
+        this.email = email;
+        this.text = text;
+    }
 }
