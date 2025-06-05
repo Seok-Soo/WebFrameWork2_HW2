@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-// vm optons: -Dspring.profiles.active=dev,
+// vm optons: -Dspring.profiles.active=dev, 설정에 추가하면
 // dev: 개발 환경
 //test: 테스트 환경
 //prod: 운영 환경
-@Profile("dev")
+@Profile("dev") //아래 코드들은 개발 환경에서만 수행이 됨. test를 넣으면 테스트 환경에서, prod를 넣으면 운영환경에서만 실행됨
 @Component
 public class DataInitializer {
 
