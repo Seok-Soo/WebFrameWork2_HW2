@@ -1,7 +1,7 @@
-package com.example.hellospringbootsecurity.service;
+package kr.ac.hansung.cse.hellospringdatajpa.service;
 
-import com.example.hellospringbootsecurity.entity.MyRole;
-import com.example.hellospringbootsecurity.entity.MyUser;
+import kr.ac.hansung.cse.hellospringdatajpa.entity.MyRole;
+import kr.ac.hansung.cse.hellospringdatajpa.entity.MyUser;
 
 import java.util.List;
 

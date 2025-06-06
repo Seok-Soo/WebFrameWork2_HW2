@@ -1,9 +1,9 @@
-package com.example.hellospringbootsecurity.service;
+package kr.ac.hansung.cse.hellospringdatajpa.service;
 
-import com.example.hellospringbootsecurity.entity.MyRole;
-import com.example.hellospringbootsecurity.entity.MyUser;
-import com.example.hellospringbootsecurity.repository.RoleRepository;
-import com.example.hellospringbootsecurity.repository.UserRepository;
+import kr.ac.hansung.cse.hellospringdatajpa.entity.MyRole;
+import kr.ac.hansung.cse.hellospringdatajpa.entity.MyUser;
+import kr.ac.hansung.cse.hellospringdatajpa.repo.RoleRepository;
+import kr.ac.hansung.cse.hellospringdatajpa.repo.UserRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

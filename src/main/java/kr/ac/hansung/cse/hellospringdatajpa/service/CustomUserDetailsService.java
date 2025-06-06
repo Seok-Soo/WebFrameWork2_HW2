@@ -1,7 +1,7 @@
-package com.example.hellospringbootsecurity.service;
+package kr.ac.hansung.cse.hellospringdatajpa.service;
 
-import com.example.hellospringbootsecurity.entity.MyUser;
-import com.example.hellospringbootsecurity.repository.UserRepository;
+import kr.ac.hansung.cse.hellospringdatajpa.entity.MyUser;
+import kr.ac.hansung.cse.hellospringdatajpa.repo.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
