@@ -1,6 +1,6 @@
-package com.example.hellospringbootsecurity.repository;
+package kr.ac.hansung.cse.hellospringdatajpa.repo;
 
-import com.example.hellospringbootsecurity.entity.MyRole;
+import kr.ac.hansung.cse.hellospringdatajpa.entity.MyRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
