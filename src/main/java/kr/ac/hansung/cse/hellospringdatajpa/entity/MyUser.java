@@ -1,4 +1,4 @@
-package com.example.hellospringbootsecurity.entity;
+package kr.ac.hansung.cse.hellospringdatajpa.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
