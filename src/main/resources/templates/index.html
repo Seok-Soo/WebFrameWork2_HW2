@@ -4,12 +4,26 @@
 
 <head th:insert="~{common :: commonHead}">
   <title>Product Manager</title>
+  <style>
+    button:disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 
 <body>
 <div class="container">
   <h1 class="mt-5">Product List</h1>
-  <a class="btn btn-primary mb-3" th:href="@{/products/new}">Create New Product</a>
+
+  <!-- Create 버튼 -->
+  <form th:action="@{/products/new}" method="get" style="display:inline;">
+    <button type="submit" class="btn btn-primary mb-3"
+            th:disabled="${not #authorization.expression('hasRole(''ADMIN'')')}">
+      Create New Product
+    </button>
+  </form>
 
   <table class="table table-bordered">
     <thead>
@@ -30,8 +44,21 @@
       <td th:text="${product.madeIn}">Made in</td>
       <td th:text="${product.price}">Price</td>
       <td>
-        <a class="btn btn-primary btn-sm" th:href="@{'/products/edit/' + ${product.id}}">Edit</a>
-        <a class="btn btn-danger btn-sm" th:href="@{'/products/delete/' + ${product.id}}">Delete</a>
+        <!-- Edit 버튼 -->
+        <form th:action="@{'/products/edit/' + ${product.id}}" method="get" style="display:inline;">
+          <button type="submit" class="btn btn-primary btn-sm"
+                  th:disabled="${not #authorization.expression('hasRole(''ADMIN'')')}">
+            Edit
+          </button>
+        </form>
+
+        <!-- Delete 버튼 -->
+        <form th:action="@{'/products/delete/' + ${product.id}}" method="get" style="display:inline;">
+          <button type="submit" class="btn btn-danger btn-sm"
+                  th:disabled="${not #authorization.expression('hasRole(''ADMIN'')')}">
+            Delete
+          </button>
+        </form>
       </td>
     </tr>
     </tbody>
