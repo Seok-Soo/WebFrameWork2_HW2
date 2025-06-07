@@ -25,11 +25,11 @@
 
       <form method="post" th:action="@{/login}">
         <div th:if="${param.error}" class="alert alert-danger" role="alert">
-          Invalid Email and Password.
+          이메일이나 비밀번호가 존재하지 않습니다.
         </div>
 
         <div th:if="${param.logout}" class="alert alert-info" role="alert">
-          Successfully logged out
+          성공적으로 로그아웃 되었습니다.
         </div>
 
         <div class="form-floating mb-2">
