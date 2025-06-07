@@ -17,14 +17,23 @@
 <div class="container">
   <h1 class="mt-5">Product List</h1>
 
-  <!-- Create 버튼 -->
-  <form th:action="@{/products/new}" method="get" style="display:inline;">
-    <button type="submit" class="btn btn-primary mb-3"
-            th:disabled="${not #authorization.expression('hasRole(''ADMIN'')')}">
-      Create New Product
-    </button>
-  </form>
+  <!-- 상단 버튼 영역: Create + Logout -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <!-- Create 버튼 -->
+    <form th:action="@{/products/new}" method="get">
+      <button type="submit" class="btn btn-primary"
+              th:disabled="${not #authorization.expression('hasRole(''ADMIN'')')}">
+        Create New Product
+      </button>
+    </form>
 
+    <!-- Logout 버튼 -->
+    <form th:action="@{/logout}" method="post">
+      <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+    </form>
+  </div>
+
+  <!-- 상품 테이블 -->
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -65,7 +74,6 @@
   </table>
 </div>
 
-<!-- Bootstrap JS fragment 삽입 -->
 <div th:insert="~{common :: commonScript}"></div>
 </body>
 </html>
