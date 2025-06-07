@@ -6,6 +6,7 @@ import kr.ac.hansung.cse.hellospringdatajpa.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,5 +52,13 @@ public class RegistrationController {
 
             return "redirect:/login";
         }
+    }
+
+    @GetMapping("/admin/home")
+    public String showAdminPage(Model model) {
+        List<MyUser> users = registrationService.findUsersByRoleId(1L);
+        System.out.println("ROLE_USER 유저 수: " + users.size());
+        model.addAttribute("users", users);
+        return "adminpage";
     }
 }

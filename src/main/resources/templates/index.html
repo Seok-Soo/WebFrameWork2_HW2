@@ -18,9 +18,21 @@
       </button>
     </form>
 
-    <form th:action="@{/logout}" method="post">
-      <button type="submit" class="btn btn-danger btn-sm">Logout</button>
-    </form>
+    <!-- 오른쪽: 관리자 페이지 + 로그아웃 -->
+    <div class="d-flex align-items-center">
+      <!-- 관리자 페이지 버튼 -->
+      <form th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+            th:action="@{/admin/home}" method="get" class="me-2">
+        <button type="submit" class="btn btn-secondary btn-sm">
+          관리자 페이지
+        </button>
+      </form>
+
+      <!-- 로그아웃 버튼 -->
+      <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+      </form>
+    </div>
   </div>
 
   <!-- 상품 테이블 -->
@@ -64,9 +76,8 @@
 <!-- 로그인 성공 시 팝업 -->
 <script th:if="${param.login}">
   setTimeout(function() {
-    alert("로그인을 성공했습니다!")
-  }, 100); // 100ms 뒤에 팝업 실행
-
+    alert("로그인을 성공했습니다!");
+  }, 100);
 </script>
 
 <!-- Bootstrap JS 삽입 -->
