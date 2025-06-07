@@ -49,7 +49,7 @@ public class RegistrationController {
 
             registrationService.createUser(user, userRoles);
 
-            return "redirect:/";
+            return "redirect:/login";
         }
     }
 }
