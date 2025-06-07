@@ -2,24 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:insert="~{common :: commonHead}">
+<head th:replace="~{common :: commonHead}">
   <title>Product Manager</title>
-  <style>
-    button:disabled {
-      pointer-events: none;
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  </style>
 </head>
 
 <body>
 <div class="container">
   <h1 class="mt-5">Product List</h1>
 
-  <!-- 상단 버튼 영역: Create + Logout -->
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <!-- Create 버튼 -->
     <form th:action="@{/products/new}" method="get">
       <button type="submit" class="btn btn-primary"
               th:disabled="${not #authorization.expression('hasRole(''ADMIN'')')}">
@@ -27,7 +18,6 @@
       </button>
     </form>
 
-    <!-- Logout 버튼 -->
     <form th:action="@{/logout}" method="post">
       <button type="submit" class="btn btn-danger btn-sm">Logout</button>
     </form>
@@ -53,15 +43,12 @@
       <td th:text="${product.madeIn}">Made in</td>
       <td th:text="${product.price}">Price</td>
       <td>
-        <!-- Edit 버튼 -->
         <form th:action="@{'/products/edit/' + ${product.id}}" method="get" style="display:inline;">
           <button type="submit" class="btn btn-primary btn-sm"
                   th:disabled="${not #authorization.expression('hasRole(''ADMIN'')')}">
             Edit
           </button>
         </form>
-
-        <!-- Delete 버튼 -->
         <form th:action="@{'/products/delete/' + ${product.id}}" method="get" style="display:inline;">
           <button type="submit" class="btn btn-danger btn-sm"
                   th:disabled="${not #authorization.expression('hasRole(''ADMIN'')')}">
@@ -74,6 +61,15 @@
   </table>
 </div>
 
-<div th:insert="~{common :: commonScript}"></div>
+<!-- 로그인 성공 시 팝업 -->
+<script th:if="${param.login}">
+  setTimeout(function() {
+    alert("로그인을 성공했습니다!")
+  }, 100); // 100ms 뒤에 팝업 실행
+
+</script>
+
+<!-- Bootstrap JS 삽입 -->
+<div th:replace="~{common :: commonScript}"></div>
 </body>
 </html>
