@@ -46,8 +46,11 @@ public class WebSecurityConfig {
                         .requestMatchers(PUBLIC_MATCHERS).permitAll()
                         .requestMatchers("/", "/home", "/signup").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
+                        //어드민 권한만 어드민 페이지에 접근 가능
                         .requestMatchers("/products").hasAnyRole("USER", "ADMIN")
+                        //제품 목록 페이지에는 어드민과 유저 모드 접근 가능
                         .requestMatchers(HttpMethod.GET, "/products/**").hasRole("ADMIN")
+                        //제품 등록, 수정, 삭제는 어드민 권한만 가능
 
                         .anyRequest().authenticated()
                 )
